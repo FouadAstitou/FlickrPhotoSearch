@@ -16,10 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        // Sets the initial view controller.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
+        let photosViewController = PhotosViewController()
+        window?.rootViewController = UINavigationController(rootViewController: photosViewController)
         
-        window?.rootViewController = UINavigationController(rootViewController: PhotosViewController())
+        // Dependency injection.
+        photosViewController.photoStore = PhotoStore()
+        
         return true
     }
 
