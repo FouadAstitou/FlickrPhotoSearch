@@ -26,9 +26,14 @@ enum FlickrError: Error {
 }
 
 struct FlickrAPI {
+    
+    //MARK: - Properties
     fileprivate static let baseURLString = "https://api.flickr.com/services/rest"
     fileprivate static let APIKey = "a6d819499131071f158fd740860a5a88"
     
+    //MARK: - flickrURL
+    
+    /// Builds up the flickrURL for a specific endpoint with the selected parameters.
     fileprivate static func flickrURL(searchTerm: String?, method: Method, parameters: [String: String]?) -> URL {
         
         var components = URLComponents(string: baseURLString)!
@@ -59,6 +64,9 @@ struct FlickrAPI {
         return components.url!
     }
     
+    //MARK: - photosForURL
+    
+    /// Method that returns a url with the specific endpoint.
     static func photosForURL(searchTerm: String?) -> URL {
         let method: Method
         if searchTerm != nil {
@@ -69,6 +77,9 @@ struct FlickrAPI {
         return flickrURL(searchTerm: searchTerm, method: method, parameters: ["extras": "url_q,url_h,date_taken"])
     }
     
+    //MARK: - photosFromJSONData
+    
+    /// Converts an NSData instance to basic foundation objects.
     static func photosFromJSONData(data: Data) -> PhotosResult {
         
         do {
@@ -100,6 +111,9 @@ struct FlickrAPI {
         }
     }
     
+    // Mark: - photoFromJSONObject
+    
+    /// Parses a JSON dictionary into a FlickrPhoto instance.
     static func photoFromJSONObject(json: [String : AnyObject]) -> Photo? {
         guard let
             photoID = json["id"] as? String,
