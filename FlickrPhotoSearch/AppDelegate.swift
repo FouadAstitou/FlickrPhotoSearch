@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = UINavigationController(rootViewController: photosViewController)
         
         // Dependency injection.
-        photosViewController.photoStore = PhotoStore()
+        photosViewController.photoStore = PhotoStore() 
         
         return true
     }
