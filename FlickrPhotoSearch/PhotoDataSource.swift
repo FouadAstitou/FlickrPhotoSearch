@@ -10,11 +10,10 @@ import UIKit
 
 class PhotoDataSource: NSObject {
     
-    // Check if i have to remove the instances and make them optional?
     var flickrPhotos = [Photo]()
-    //var photoStore = PhotoStore()
 }
 
+//MARK: - data source methods.
 extension PhotoDataSource: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -25,8 +24,7 @@ extension PhotoDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionCell.identifier, for: indexPath) as! PhotoCollectionCell
         
         let photo = flickrPhotos[indexPath.item]
-        cell.updateWithImage(image: photo.image)
-        cell.backgroundColor = .white
+        cell.updateWithImage(image: photo.image, size: .regular)
         
         return cell
     }

@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        // Sets the appearance
+        Appearance.setGlobalAppearance()
+        
         // Sets the initial view controller.
         self.window = UIWindow(frame: UIScreen.main.bounds)
         self.window?.makeKeyAndVisible()
@@ -26,6 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         photosViewController.photoStore = PhotoStore() 
         
         return true
+    }
+    
+    struct Appearance {
+        static func setGlobalAppearance() {
+            UIApplication.shared.statusBarStyle = .lightContent
+
+            UINavigationBar.appearance().tintColor = .white
+            UINavigationBar.appearance().barTintColor = #colorLiteral(red: 0.1124189869, green: 0.5902332664, blue: 0.8251777887, alpha: 1)
+            UINavigationBar.appearance().isTranslucent = false
+            UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 20)!]
+            
+            UIBarButtonItem.appearance().setTitleTextAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 17)!], for: .normal)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

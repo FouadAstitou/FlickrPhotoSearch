@@ -29,13 +29,12 @@ class PhotoStore {
     
     //MARK: - Properties.
     
-    // Computed property for NSURLSession.
     fileprivate let session: URLSession = {
         let config = URLSessionConfiguration.default
         return URLSession(configuration: config)
     }()
     
-    //MARK: - fetchPhotosForSearchTerm
+    //MARK: - fetchPhotosFromFlickr
     
     /// Fetches the photos from flickr.
     func fetchPhotosFromFlickr(searchTerm: String?, completion: @escaping (PhotosResult) -> Void) {

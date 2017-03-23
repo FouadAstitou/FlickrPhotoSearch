@@ -52,7 +52,6 @@ struct FlickrAPI {
             let item = URLQueryItem(name: key, value: value)
             queryItems.append(item)
         }
-        
         if let additionalParams = parameters {
             for (key, value) in additionalParams {
                 let item = URLQueryItem(name: key, value: value)
@@ -99,7 +98,6 @@ struct FlickrAPI {
                     finalPhotos.append(photo)
                 }
             }
-            
             if finalPhotos.count == 0 && photosArray.count > 0 {
                 // We weren't able to parse any of the photos. Maybe the JSON format for photos has changed.
                 return .failure(FlickrError.invalidJSONData)
@@ -124,7 +122,6 @@ struct FlickrAPI {
             let photoURL = URL(string: photoURLString)
             
             else {
-                
                 // If we don't have enough information to construct a Photo.
                 return nil
         }
